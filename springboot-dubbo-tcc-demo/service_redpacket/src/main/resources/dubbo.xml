@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        ">
+
+	<dubbo:application name="provider_service_redpacket" />
+	<dubbo:monitor protocol="registry" />
+
+	<dubbo:registry protocol="zookeeper" address="${zookeeper.address}"
+		timeout="${zookeeper.timeout}" />
+
+	<!-- 用dubbo协议在20880端口暴露服务 -->
+	<dubbo:protocol name="dubbo" port="${dubbo.port}" />
+
+	
+	<bean id="redPacketTradeOrderService" class="com.iyihua.itimes.services.RedPacketTradeOrderServiceImpl"></bean>
+	<dubbo:service ref="redPacketTradeOrderService" protocol="dubbo"
+		interface="org.mengyun.tcctransaction.sample.dubbo.redpacket.api.RedPacketTradeOrderService" timeout="${zookeeper.timeout}"></dubbo:service>
+		
+</beans>
+

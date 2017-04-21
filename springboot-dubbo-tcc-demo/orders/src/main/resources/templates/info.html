@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/bower_components/bootstrap-css-only/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/global.css" />
+</head>
+<body>
+  <div id="header"></div>
+
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Infomation.</h1>
+      <p>${message}</p>
+      <p><a class="btn btn-success btn-lg" href="${redirect}" role="button">Get Started &raquo;</a></p>
+    </div>
+  </div>
+  <div class="navbar navbar-fixed-bottom content-center"><footer><p>&copy; 2016 TimeItem, Inc.</p></footer></div>
+
+  <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script> 
+    $(function(){
+      $("#header").load("/view/header.html"); 
+      // $("#footer").load("footer.html"); 
+    });
+  </script>
+</body>
+</html>

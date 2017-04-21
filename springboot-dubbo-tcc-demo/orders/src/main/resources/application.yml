@@ -1,0 +1,27 @@
+shiro:
+  realm: com.iyihua.itimes.config.security.MyRealm
+  loginUrl: /view/sign-in.html
+  successUrl: /item.html
+  unauthorizedUrl: /forbidden.html
+  filterChainDefinitions:
+    "/login": anon
+    "/view/sign-in": anon
+    "/sign-up": anon
+    "/user/**": anon
+    "/view/report.html": authc
+    "/view/**": anon
+    "/css/**": anon
+    "/static/**": anon
+    "/bower_components/**": anon
+    "/app/**": anon
+    "/lib/**": anon
+    "/auth": anon
+    "/account/**": anon
+    "/index.html": anon
+    "/about.html": anon
+    "/logout": anon
+    "/**": authc
+  enableShareJsession: true
+  shareJsessionKey: SHAREJSESSIONID
+  domain: .timeitem.com
+  path: /

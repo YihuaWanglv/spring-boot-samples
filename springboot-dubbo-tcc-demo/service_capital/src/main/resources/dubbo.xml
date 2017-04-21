@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        ">
+
+	<dubbo:application name="provider_service_capital" />
+	<dubbo:monitor protocol="registry" />
+
+	<dubbo:registry protocol="zookeeper" address="${zookeeper.address}"
+		timeout="${zookeeper.timeout}" />
+
+	<!-- 用dubbo协议在20880端口暴露服务 -->
+	<dubbo:protocol name="dubbo" port="${dubbo.port}" />
+
+	<bean id="capitalTradeOrderService" class="com.iyihua.itimes.services.CapitalTradeOrderServiceImpl"></bean>
+	<dubbo:service ref="capitalTradeOrderService" protocol="dubbo"
+		interface="org.mengyun.tcctransaction.sample.dubbo.capital.api.CapitalTradeOrderService" timeout="${zookeeper.timeout}"></dubbo:service>
+		
+</beans>
+
