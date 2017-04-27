@@ -18,3 +18,5 @@
 
 - [spring-boot-sharding-jdbc](https://github.com/YihuaWanglv/spring-boot-samples/blob/master/spring-boot-sharding-jdbc):说明：https://github.com/YihuaWanglv/spring-boot-samples/blob/master/spring-boot-sharding-jdbc/README.md
 
+- [spring-boot-elasticsearch](https://github.com/YihuaWanglv/spring-boot-samples/blob/master/spring-boot-elasticsearch):说明：https://github.com/YihuaWanglv/spring-boot-samples/blob/master/spring-boot-elasticsearch/README.md
+
