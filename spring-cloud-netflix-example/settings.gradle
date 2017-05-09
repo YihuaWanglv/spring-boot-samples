@@ -1,0 +1,9 @@
+rootProject.name = 'spring-cloud-netflix-example'
+
+include "eureka-server"
+include "service-a"
+include "service-b"
+include "zuul"
+include "hystrix-dashboard"
+include "config-server"
+include "admin-dashboard"
