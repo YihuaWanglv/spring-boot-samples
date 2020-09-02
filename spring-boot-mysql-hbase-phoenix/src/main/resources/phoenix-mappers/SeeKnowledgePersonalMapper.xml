@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qkc.bus.phoenix.hbase.mapper.SeeKnowledgePersonalMapper">
+
+    <resultMap id="BaseResultMap" type="com.qkc.bus.phoenix.hbase.domains.SeeKnowledgePersonal">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="student_id" jdbcType="VARCHAR" property="studentId"/>
+        <result column="knowledge_subject_code" jdbcType="VARCHAR" property="knowledgeSubjectCode"/>
+        <result column="knowledge_module_code" jdbcType="VARCHAR" property="knowledgeModuleCode"/>
+        <result column="knowledge_unit_code" jdbcType="VARCHAR" property="knowledgeUnitCode"/>
+        <result column="knowledge_point_code" jdbcType="VARCHAR" property="knowledgePointCode"/>
+        <result column="last_time" jdbcType="TIMESTAMP" property="lastTime"/>
+        <result column="last_result" jdbcType="VARCHAR" property="lastResult"/>
+        <result column="right_num" jdbcType="INTEGER" property="rightNum"/>
+        <result column="memory_value" jdbcType="INTEGER" property="memoryValue"/>
+        <result column="experience_value" jdbcType="INTEGER" property="experienceValue"/>
+        <result column="creater_user" jdbcType="VARCHAR" property="createrUser"/>
+        <result column="creater_time" jdbcType="TIMESTAMP" property="createrTime"/>
+        <result column="modified_user" jdbcType="VARCHAR" property="modifiedUser"/>
+        <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime"/>
+    </resultMap>
+
+    <select id="testQuery" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select *
+        from see_knowledge_personal
+        where 1=1
+    </select>
+
+    <insert id="save">
+        UPSERT INTO see_knowledge_personal VALUES( #{id}, #{studentId}, #{knowledgeSubjectCode}, #{knowledgeModuleCode}, #{knowledgeUnitCode},
+        #{knowledgePointCode}, #{lastTime}, #{lastResult}, #{rightNum}, #{memoryValue}, #{experienceValue}, #{createrUser},
+        #{createrTime}, #{modifiedUser}, #{modifiedTime})
+    </insert>
+
+    <delete id="deleteById">
+        DELETE FROM see_knowledge_personal WHERE id=#{id}
+    </delete>
+
+    <select id="fetchByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select *
+        from see_knowledge_personal
+        where 1=1
+        <include refid="commonCondition"/>
+        <choose>
+            <when test="sortBy != null and sortType != null">
+                order by ${sortBy} ${sortType}
+            </when>
+            <when test="sortBy != null">
+                order by ${sortBy} desc
+            </when>
+        </choose>
+        <if test="limit != null">
+            limit #{limit}
+        </if>
+        <if test="offset != null">
+            offset #{offset}
+        </if>
+    </select>
+
+    <select id="countByParams" parameterType="java.util.Map" resultType="java.lang.Long">
+        select count(1)
+        from see_knowledge_personal
+        where 1=1
+        <include refid="commonCondition"/>
+    </select>
+
+
+    <sql id="commonCondition">
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="studentId != null">
+            and student_id = #{studentId}
+        </if>
+        <if test="knowledgeSubjectCode != null">
+            and knowledge_subject_code = #{knowledgeSubjectCode}
+        </if>
+        <if test="knowledgeModuleCode != null">
+            and knowledge_module_code = #{knowledgeModuleCode}
+        </if>
+        <if test="knowledgeUnitCode != null">
+            and knowledge_unit_code = #{knowledgeUnitCode}
+        </if>
+        <if test="knowledgePointCode != null">
+            and knowledge_point_code = #{knowledgePointCode}
+        </if>
+    </sql>
+
+</mapper>

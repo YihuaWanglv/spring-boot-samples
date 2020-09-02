@@ -20,3 +20,4 @@
 
 - [spring-boot-elasticsearch](https://github.com/YihuaWanglv/spring-boot-samples/blob/master/spring-boot-elasticsearch):说明：https://github.com/YihuaWanglv/spring-boot-samples/blob/master/spring-boot-elasticsearch/README.md
 
+- [spring-boot-mysql-hbase-phoenix](https://github.com/YihuaWanglv/spring-boot-samples/tree/master/spring-boot-mysql-hbase-phoenix)
